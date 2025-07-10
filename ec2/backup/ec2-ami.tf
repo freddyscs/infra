@@ -1,4 +1,4 @@
-resource "aws_instance" "fr_ec2_ubuntu" {
+resource "aws_instance" "fr_ec2_ubuntu_tf" {
   ami                    = "ami-09e13cea2cf508a84"
   instance_type          = "t2.micro"
   subnet_id              = "subnet-018901167754cf17a"
@@ -7,7 +7,7 @@ resource "aws_instance" "fr_ec2_ubuntu" {
   key_name               = "wiz-fr-key"
 
   tags = {
-    Name = "wiz_fr_ec2_ubuntu_18.04_mongo_4.4"
+    Name = "wiz_fr_ec2_ubuntu_18.04_mongo_4.4_tf"
   }
 }
 
