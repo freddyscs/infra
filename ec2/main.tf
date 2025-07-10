@@ -24,12 +24,12 @@ variable "region" {
 }
 
 resource "aws_instance" "mail_server" {
-  ami           = "ami-0c02fb55956c7d316"
-  instance_type = "t2.micro"
-  subnet_id              = "subnet-018901167754cf17a"
-  vpc_security_group_ids = [aws_security_group.wiz_fr_public_sg.id]
+  ami                         = "ami-0c02fb55956c7d316"
+  instance_type               = "t2.micro"
+  subnet_id                   = "subnet-018901167754cf17a"
+  vpc_security_group_ids      = [aws_security_group.wiz_fr_public_sg.id]
   associate_public_ip_address = true
-  key_name               = "wiz-fr-key"
+  key_name                    = "wiz-fr-key"
 
   tags = {
     Name = "MailServer"
