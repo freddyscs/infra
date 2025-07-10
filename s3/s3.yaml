@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation template to create a public S3 bucket
+
+Resources:
+  PublicS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: my-public-s3-bucket-123456 # Change this to a globally unique name
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        IgnorePublicAcls: false
+        BlockPublicPolicy: false
+        RestrictPublicBuckets: false
+
+  PublicS3BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref PublicS3Bucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowPublicRead
+            Effect: Allow
+            Principal: "*"
+            Action: "s3:GetObject"
+            Resource: !Sub "${PublicS3Bucket.Arn}/*"
+
+Outputs:
+  BucketName:
+    Description: Name of the public S3 bucket
+    Value: !Ref PublicS3Bucket
+
+  BucketURL:
+    Description: URL to access the bucket (for static website hosting)
+    Value: !Sub "http://${PublicS3Bucket}.s3.amazonaws.com"
