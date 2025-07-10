@@ -7,10 +7,10 @@ terraform {
   }
 
   backend "remote" {
-    organization = "mi-organizacion"
+    organization = "freddyscs"
 
     workspaces {
-      name = "mi-workspace"
+      name = "freddyscs"
     }
   }
 }
