@@ -23,7 +23,7 @@ variable "region" {
   default = "us-east-1"
 }
 
-resource "aws_instance" "mail_server" {
+resource "aws_instance" "wiz-test-ec2" {
   ami                         = "ami-0c02fb55956c7d316"
   instance_type               = "t2.micro"
   subnet_id                   = "subnet-018901167754cf17a"
@@ -32,6 +32,6 @@ resource "aws_instance" "mail_server" {
   key_name                    = "wiz-fr-key"
 
   tags = {
-    Name = "MailServer"
+    Name = "wiz-test-ec2"
   }
 }
